@@ -16,14 +16,14 @@ const dashboard = require("./Routes/dashboardRoute")
 require("./Configuration/dbConfig");
 
 app.use(cors({
-    origin: "https://employee-mangment-system-frontend-z.vercel.app",
+    origin: ["https://employee-mangment-system-frontend-z.vercel.app", "https://employee-mangment-backend.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    credentials: true,
+    optionsSuccessStatus: 200 // Kuch browsers ke liye zaroori hai
 }));
 
 
-app.options("/*", cors());
 
 app.use(express.json());
 
