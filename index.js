@@ -16,9 +16,13 @@ const dashboard = require("./Routes/dashboardRoute")
 require("./Configuration/dbConfig");
 
 app.use(cors({
-        origin:"https://employee-mangment-system-frontend-z.vercel.app",
-        credentials:true
-}))
+    origin: "https://employee-mangment-system-frontend-z.vercel.app", // Aapka frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // OPTIONS lazmi shamil karein
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
+app.options("*", cors());
+
 app.use(express.json())
 
 const path = require('path');
