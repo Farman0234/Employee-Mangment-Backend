@@ -17,6 +17,7 @@ const employeeSchema = new mongoose.Schema({
     designation: { type: String, required: true },
     department: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     salary: { type: String, required: true },
+    isBlocked: { type: Boolean, default: false } ,
     createAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 })
