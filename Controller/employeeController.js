@@ -159,34 +159,4 @@ const fetechEmployeeDepartment = async (req, res) => {
 }
 
 
-
-/* ================= BLOCK / UNBLOCK EMPLOYEE ================= */
-const toggleBlockEmployee = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const employee = await Employee.findById(id);
-    if (!employee) {
-      return res.status(404).json({ success: false, error: "Employee not found" });
-    }
-
-    const user = await User.findById(employee.userID);
-    if (!user) {
-      return res.status(404).json({ success: false, error: "User not found" });
-    }
-
-    user.isBlocked = !user.isBlocked;
-    await user.save();
-
-    res.status(200).json({
-      success: true,
-      message: user.isBlocked ? "Employee blocked" : "Employee unblocked",
-      isBlocked: user.isBlocked
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: "Failed to update status" });
-  }
-};
-module.exports = { addEmployee, uploads, getEmployee, getOneEmployee, updateEmployee, fetechEmployeeDepartment,toggleBlockEmployee }
+module.exports = { addEmployee, uploads, getEmployee, getOneEmployee, updateEmployee, fetechEmployeeDepartment }
